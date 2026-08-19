@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/* ============================================================
+   LUMI — Global Base Reset (Full 100vw × 100vh Viewport)
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background: #F3E8FF;
+  color: #35176D;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.app-shell {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Primary Centered Application Container (1400px Max Width) */
+.main-container,
+.content-container,
+.hero-container,
+.page-container {
+  width: min(1400px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 32px 0 60px;
+}
+
+@media (max-width: 900px) {
+  .main-container,
+  .content-container,
+  .hero-container,
+  .page-container {
+    width: calc(100% - 32px);
+    padding: 20px 0 40px;
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Universal font inheritance */
+button, input, select, textarea, label {
+  font-family: 'Nunito', sans-serif;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, [role="button"] {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom Scrollbars — LUMI purple */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(109, 40, 217, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7C3AED, #9333EA);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #6D28D9, #7C3AED);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
