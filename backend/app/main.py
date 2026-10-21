@@ -56,6 +56,13 @@ def on_startup():
                 db.add(item)
             db.commit()
 
+    # Automatically seed presentation records if empty
+    try:
+        from seed_demo_data import seed_demo_data
+        seed_demo_data()
+    except Exception as seed_err:
+        print(f"[Startup Seed] {seed_err}")
+
 # Register Routers
 app.include_router(auth_router)
 app.include_router(children_router)
