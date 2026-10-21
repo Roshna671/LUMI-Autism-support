@@ -2,17 +2,19 @@ import React from 'react';
 import { Home, Sparkles, Stethoscope, Waves, User } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useApp } from '../context/AppContext';
 
 export default function BottomNavigation() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useApp();
 
   const navItems = [
-    { label: 'Home', path: '/home', icon: Home },
-    { label: 'Activities', path: '/activities', icon: Sparkles },
-    { label: 'Therapy', path: '/goals', icon: Stethoscope },
-    { label: 'Sensory', path: '/sensory', icon: Waves },
-    { label: 'Profile', path: '/profile', icon: User }
+    { label: t('home'), path: '/home', icon: Home },
+    { label: t('activities'), path: '/activities', icon: Sparkles },
+    { label: t('therapy') || 'Therapy', path: '/goals', icon: Stethoscope },
+    { label: t('sensory'), path: '/sensory', icon: Waves },
+    { label: t('profile'), path: '/profile', icon: User }
   ];
 
   return (

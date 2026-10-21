@@ -3,6 +3,7 @@ import { Sparkles, Volume2 } from 'lucide-react';
 import { soundManager } from '../utils/soundManager';
 import { speakText } from '../utils/speech';
 import { useChildProfile } from '../context/ChildProfileContext';
+import { useApp } from '../context/AppContext';
 
 export default function CompanionMascot({
   companion: explicitCompanion, // if provided manually
@@ -11,11 +12,13 @@ export default function CompanionMascot({
   size = 'md', // 'sm' | 'md' | 'lg' | 'xl'
   onClick,
   showSpeech = true,
-  currentLang = 'en'
+  currentLang: explicitLang = null
 }) {
   const { profile } = useChildProfile();
+  const { profile: appProfile } = useApp();
   const activeCompanion = explicitCompanion || profile?.companion || 'panda';
   const childName = profile?.name || 'Aarav';
+  const currentLang = explicitLang || appProfile?.language || profile?.language || 'en';
 
   const [isBlinking, setIsBlinking] = useState(false);
 

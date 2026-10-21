@@ -5,7 +5,7 @@ import { useApp } from '../context/AppContext';
 
 export default function ParentModeButton({ className = '' }) {
   const navigate = useNavigate();
-  const { speakText } = useApp();
+  const { speakText, t } = useApp();
   const [showPinModal, setShowPinModal] = useState(false);
   const [pin, setPin] = useState(['', '', '', '']);
   const [error, setError] = useState(false);
@@ -42,7 +42,7 @@ export default function ParentModeButton({ className = '' }) {
         className={`flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-md text-white border border-white/30 shadow-md hover:bg-white/25 transition-all text-sm font-extrabold ${className}`}
       >
         <Lock className="w-4 h-4 text-[#FFD83D]" />
-        <span>Parent Mode</span>
+        <span>{t('parentMode')}</span>
       </button>
 
       {/* Math / PIN Lock Modal for Parent Entry */}

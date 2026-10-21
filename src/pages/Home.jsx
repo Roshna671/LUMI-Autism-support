@@ -12,15 +12,15 @@ import { useApp } from '../context/AppContext';
 
 export default function Home() {
   const navigate = useNavigate();
-  const { profile, stats, speakText } = useApp();
+  const { profile, stats, speakText, t } = useApp();
 
   const mainActions = [
-    { title: 'Play Now', subtitle: 'Fun interactive games', icon: Gamepad2, route: '/activities', color: 'from-[#612BEB] via-[#F36BB5] to-[#FF9D2E]' },
+    { title: t('play') || 'Play Now', subtitle: 'Fun interactive games', icon: Gamepad2, route: '/activities', color: 'from-[#612BEB] via-[#F36BB5] to-[#FF9D2E]' },
     { title: 'Daily Goals', subtitle: '3 of 5 completed today', icon: Target, route: '/goals', color: 'from-[#45C7F5] to-[#612BEB]' },
     { title: 'Progress', subtitle: 'View learning growth', icon: TrendingUp, route: '/parent/progress', color: 'from-[#63D66F] to-[#45C7F5]' },
-    { title: 'Rewards', subtitle: 'Treasure chest & badges', icon: Trophy, route: '/rewards', color: 'from-[#FFD83D] to-[#FF9D2E]' },
+    { title: t('rewards') || 'Rewards', subtitle: 'Treasure chest & badges', icon: Trophy, route: '/rewards', color: 'from-[#FFD83D] to-[#FF9D2E]' },
     { title: 'Therapy Plan', subtitle: 'Custom daily routine', icon: Stethoscope, route: '/parent', color: 'from-[#F36BB5] to-[#612BEB]' },
-    { title: 'Sensory Calm', subtitle: 'Relaxation & soothing visuals', icon: Waves, route: '/sensory', color: 'from-[#79DDF8] to-[#45C7F5]' }
+    { title: t('sensory') || 'Sensory Calm', subtitle: 'Relaxation & soothing visuals', icon: Waves, route: '/sensory', color: 'from-[#79DDF8] to-[#45C7F5]' }
   ];
 
   return (
@@ -36,10 +36,10 @@ export default function Home() {
             </div>
             <div>
               <h1 className="text-3xl md:text-4xl font-black text-white mb-1">
-                Welcome, {profile.name || 'Aarav'}! 👋
+                {t('hiUser', { name: profile.name || 'Aarav' })}
               </h1>
               <p className="text-sm md:text-base text-purple-200 font-extrabold">
-                Let's continue your learning journey
+                {t('readyToPlay')}
               </p>
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function Home() {
             <PrimaryButton
               icon={Play}
               onClick={() => {
-                speakText('Let us play Bubble Pop!');
+                speakText(t('letsPlay'));
                 navigate('/activities/bubble-pop');
               }}
             >
@@ -97,7 +97,7 @@ export default function Home() {
             <LumiCharacter
               expression="happy"
               size="lg"
-              message={`Let's play together, ${profile.name}!`}
+              message={`${t('welcome')} ${t('letsPlay')}, ${profile.name}!`}
             />
           </div>
         </div>

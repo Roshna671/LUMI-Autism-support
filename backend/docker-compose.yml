@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lumi_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://lumi_user:lumi_password@db:5432/lumi_db
+      - SECRET_KEY=lumi_production_super_secret_key_change_me_in_prod_2026
+      - CORS_ORIGINS=http://localhost:5173,http://localhost:3000
+      - ACCESS_TOKEN_EXPIRE_MINUTES=1440
+    volumes:
+      - lumi_storage:/app/private_storage
+      - lumi_models:/app/model_artifacts
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:15-alpine
+    container_name: lumi_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: lumi_user
+      POSTGRES_PASSWORD: lumi_password
+      POSTGRES_DB: lumi_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lumi_user -d lumi_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+  lumi_storage:
+  lumi_models:

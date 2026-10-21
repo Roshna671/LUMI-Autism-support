@@ -12,6 +12,7 @@ const LANGUAGES = [
   { id: 'kn', name: 'Kannada',   flag: '🇮🇳', native: 'ಕನ್ನಡ',     symbol: '🐘', sample: 'ನಮಸ್ಕಾರ!' },
   { id: 'ta', name: 'Tamil',     flag: '🇮🇳', native: 'தமிழ்',     symbol: '🦚', sample: 'வணக்கம்!' },
   { id: 'te', name: 'Telugu',    flag: '🇮🇳', native: 'తెలుగు',    symbol: '🌼', sample: 'నమస్కారం!' },
+  { id: 'ml', name: 'Malayalam', flag: '🇮🇳', native: 'മലയാളം',   symbol: '🌴', sample: 'നമസ്കാരം!' },
 ];
 
 export default function LanguageSelectorModal({ isOpen, onClose, selectedLang = 'en', onSelectLang }) {

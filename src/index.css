@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap');
 @import "tailwindcss";
 
 /* ============================================================
-   LUMI — Global Base Reset (Full 100vw × 100vh Viewport)
+   LUMI — Global Base Reset (Full Viewport & Responsive Center)
    ============================================================ */
 
 *,
@@ -23,14 +24,14 @@ body,
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  background: #F3E8FF;
-  color: #35176D;
+  background: #070913;
+  color: #F8FAFC;
 }
 
 #root {
@@ -48,12 +49,12 @@ body {
   flex-direction: column;
 }
 
-/* Primary Centered Application Container (1400px Max Width) */
+/* Primary Centered Application Container */
 .main-container,
 .content-container,
 .hero-container,
 .page-container {
-  width: min(1400px, calc(100% - 80px));
+  width: min(1400px, calc(100% - 64px));
   margin: 0 auto;
   padding: 32px 0 60px;
 }
@@ -75,7 +76,7 @@ img {
 
 /* Universal font inheritance */
 button, input, select, textarea, label {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 button {
@@ -100,27 +101,155 @@ button, [role="button"] {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Custom Scrollbars — LUMI purple */
+/* Custom Scrollbars — LUMI glowing cyan */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(109, 40, 217, 0.1);
+  background: rgba(15, 23, 42, 0.6);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #7C3AED, #9333EA);
+  background: linear-gradient(180deg, #00F5FF, #6366F1);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #6D28D9, #7C3AED);
+  background: linear-gradient(180deg, #38BDF8, #818CF8);
 }
 
+/* Major Headings use Outfit for geometric aesthetic impact */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   LUMI — Premium Aesthetic Glassmorphism & Typography Utilities
+   ============================================================ */
+
+.font-outfit {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-playful {
+  font-family: 'Fredoka', 'Baloo 2', 'Nunito', sans-serif;
+}
+
+/* Deep High-End Frosted Glass Container with Ambient Specular Rim */
+.glass-card {
+  background: rgba(13, 20, 38, 0.72);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+.glass-card-glow {
+  background: rgba(11, 18, 35, 0.82);
+  backdrop-filter: blur(36px);
+  -webkit-backdrop-filter: blur(36px);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.75), 
+    0 0 40px rgba(0, 245, 255, 0.15), 
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.22);
+}
+
+.glass-card-subpanel {
+  background: rgba(18, 28, 54, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Glass Buttons with Specular Hover Glow */
+.glass-btn {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), 0 0 25px rgba(0, 245, 255, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.glass-btn-active {
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.2) 0%, rgba(99, 102, 241, 0.25) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 2px solid #00F5FF;
+  box-shadow: 0 8px 30px rgba(0, 245, 255, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+}
+
+/* Glass Inputs */
+.glass-input {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+.glass-input:focus {
+  border-color: #00F5FF;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.35), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+
+/* Primary Glowing CTA Button */
+.btn-primary-lumi {
+  background: linear-gradient(135deg, #00F5FF 0%, #38BDF8 40%, #6366F1 100%);
+  color: #070913;
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  box-shadow: 0 8px 30px rgba(0, 245, 255, 0.45);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-lumi:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 45px rgba(0, 245, 255, 0.65);
+}
+
+.btn-primary-lumi:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Subtle Shimmer Sweep */
+@keyframes shimmerGlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.shimmer-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-20deg);
+  animation: shimmerGlow 3.5s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

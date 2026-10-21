@@ -4,7 +4,7 @@ import { AppProvider } from './context/AppContext';
 
 // Pages
 import Welcome from './pages/Welcome';
-import Onboarding from './pages/Onboarding';
+import CaregiverOnboarding from './pages/CaregiverOnboarding';
 import Home from './pages/Home';
 import Activities from './pages/Activities';
 import BubblePop from './pages/BubblePop';
@@ -22,7 +22,10 @@ import ParentDashboard from './pages/ParentDashboard';
 import ParentProgress from './pages/ParentProgress';
 import ParentActivities from './pages/ParentActivities';
 import ParentGoals from './pages/ParentGoals';
-import ParentReports from './pages/TherapyReport';
+import ParentDailyReport from './pages/ParentDailyReport';
+import ParentActivityPlanner from './pages/ParentActivityPlanner';
+import ParentGuidance from './pages/ParentGuidance';
+import TherapyReport from './pages/TherapyReport';
 import AIInsights from './pages/AIInsights';
 import Settings from './pages/Settings';
 
@@ -32,7 +35,8 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Welcome />} />
-          <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/onboarding" element={<CaregiverOnboarding />} />
+          <Route path="/parent/profile-assessment" element={<CaregiverOnboarding />} />
           <Route path="/home" element={<Home />} />
           <Route path="/activities" element={<Activities />} />
           <Route path="/activities/bubble-pop" element={<BubblePop />} />
@@ -47,10 +51,14 @@ export default function App() {
           <Route path="/rewards" element={<Rewards />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/parent" element={<ParentDashboard />} />
+          <Route path="/parent/planner" element={<ParentActivityPlanner />} />
+          <Route path="/parent/reports" element={<ParentDailyReport />} />
+          <Route path="/parent/daily-report" element={<ParentDailyReport />} />
+          <Route path="/parent/clinical-summary" element={<TherapyReport />} />
+          <Route path="/parent/guidance" element={<ParentGuidance />} />
           <Route path="/parent/progress" element={<ParentProgress />} />
           <Route path="/parent/activities" element={<ParentActivities />} />
           <Route path="/parent/goals" element={<ParentGoals />} />
-          <Route path="/parent/reports" element={<ParentReports />} />
           <Route path="/parent/insights" element={<AIInsights />} />
           <Route path="/settings" element={<Settings />} />
 

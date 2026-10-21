@@ -3,3 +3,21 @@ dist/
 .env
 .env.local
 .env.*.local
+
+# Python & Backend virtual environments
+venv/
+backend/venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+backend/test_lumi.db
+
+# Private Vault (Uploaded clinical documents)
+backend/vault/*
+!backend/vault/.gitkeep
+
+# Vercel & nested clone
+.vercel/
+LUMI-Autism-support/

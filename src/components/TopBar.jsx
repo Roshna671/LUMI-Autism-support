@@ -6,7 +6,7 @@ import ParentModeButton from './ParentModeButton';
 import { useApp } from '../context/AppContext';
 
 export default function TopBar({ showChildGreeting = true, className = '' }) {
-  const { profile, soundEnabled, toggleSound, stats } = useApp();
+  const { profile, soundEnabled, toggleSound, stats, t } = useApp();
   const navigate = useNavigate();
 
   return (
@@ -25,7 +25,7 @@ export default function TopBar({ showChildGreeting = true, className = '' }) {
             className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/95 text-[#171062] font-black text-sm border-2 border-[#F36BB5] shadow-[0_4px_15px_rgba(243,107,181,0.3)] hover:scale-105 transition-transform"
           >
             <span className="text-lg">{profile.avatar || '🦁'}</span>
-            <span>Hi {profile.name || 'Aarav'}! 👋</span>
+            <span>{t('hiUser', { name: profile.name || 'Aarav' })}</span>
             <span className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-full bg-[#FFD83D] text-[#171062] font-black">
               ⭐ {stats.stars}
             </span>

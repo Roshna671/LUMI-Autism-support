@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const DEFAULT_PROFILE = {
   name: 'Aarav',
   age: 4,
+  language: 'en',
   companion: 'panda', // 'panda' | 'lion' | 'elephant' | 'lumi'
   condition: 'Both',
   interests: ['dinosaurs', 'animals', 'bubbles']
@@ -20,7 +21,8 @@ export function ChildProfileProvider({ children }) {
           return {
             ...DEFAULT_PROFILE,
             ...parsed,
-            companion: parsed.companion || 'panda'
+            companion: parsed.companion || 'panda',
+            language: parsed.language || 'en'
           };
         }
       }
@@ -42,6 +44,10 @@ export function ChildProfileProvider({ children }) {
     });
   };
 
+  const setLanguage = (language) => {
+    updateProfile({ language });
+  };
+
   const setCompanion = (companionId) => {
     updateProfile({ companion: companionId });
   };
@@ -59,6 +65,7 @@ export function ChildProfileProvider({ children }) {
       value={{
         profile,
         updateProfile,
+        setLanguage,
         setCompanion,
         setName,
         setAge

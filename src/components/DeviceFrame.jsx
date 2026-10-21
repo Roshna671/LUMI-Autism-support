@@ -4,6 +4,7 @@ import LumiCreativeLogo from './LumiCreativeLogo';
 import LanguageSelectorModal from './LanguageSelectorModal';
 import { soundManager } from '../utils/soundManager';
 import { useChildProfile } from '../context/ChildProfileContext';
+import { useApp } from '../context/AppContext';
 
 const LANG_MAP = {
   en: { name: 'ENGLISH', flag: '🇬🇧' },
@@ -15,6 +16,7 @@ const LANG_MAP = {
   kn: { name: 'ಕನ್ನಡ', flag: '🇮🇳' },
   ta: { name: 'தமிழ்', flag: '🇮🇳' },
   te: { name: 'తెలుగు', flag: '🇮🇳' },
+  ml: { name: 'മലയാളം', flag: '🇮🇳' },
 };
 
 const COMPANION_ICONS = {
@@ -34,11 +36,25 @@ export default function DeviceFrame({
   activeTab = 'home',
   onNavigateTab
 }) {
-  const { profile } = useChildProfile();
+  const { profile: appProfile, updateProfile: updateAppProfile, speakText, t } = useApp();
+  const { profile, updateProfile: updateChildProfile } = useChildProfile();
   const [isMuted, setIsMuted] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState('en');
+  const [selectedLang, setSelectedLang] = useState(appProfile?.language || profile?.language || 'en');
+
+  useEffect(() => {
+    if (appProfile?.language) {
+      setSelectedLang(appProfile.language);
+    }
+  }, [appProfile?.language]);
+
+  const handleSelectLang = (langId) => {
+    setSelectedLang(langId);
+    if (updateAppProfile) updateAppProfile({ language: langId });
+    if (updateChildProfile) updateChildProfile({ language: langId });
+    speakText(`Language changed`, 0.9, 1.2);
+  };
 
   useEffect(() => {
     const handleFSChange = () => {
@@ -204,7 +220,7 @@ export default function DeviceFrame({
         isOpen={isLangOpen}
         onClose={() => setIsLangOpen(false)}
         selectedLang={selectedLang}
-        onSelectLang={setSelectedLang}
+        onSelectLang={handleSelectLang}
       />
     </div>
   );
